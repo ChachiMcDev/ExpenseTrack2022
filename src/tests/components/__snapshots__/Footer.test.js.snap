@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render NotFoundPage correctly 1`] = `
+<header>
+  <h1>
+    Im the footer
+  </h1>
+  <div
+    className="menu"
+  >
+    social media and address and what not
+  </div>
+</header>
+`;
