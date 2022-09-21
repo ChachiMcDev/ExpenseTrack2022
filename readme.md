@@ -10,3 +10,7 @@ git log -- view recent commits
 git remote add origin https://github.com/ChachiMcDev/ExpenseTrack2022
 git branch -M main
 git push -u origin main
+
+#npm commands
+npm install --production -- only installs dependencies
+npm install -- installs dev and prod dependencies
