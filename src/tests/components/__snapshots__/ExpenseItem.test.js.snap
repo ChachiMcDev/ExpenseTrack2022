@@ -4,17 +4,16 @@ exports[`should render ExpenseItem with expense 1`] = `
 <div>
   <Link
     replace={false}
-    to="/edit/1"
+    to="/edit/3"
   >
     <h3>
-      water bill
+      cmon now 3
     </h3>
   </Link>
   <p>
-    0
-     - 
-    -345600000
-     
+    $260.00
+     -
+    January 1st, 1970
   </p>
   <p />
   <button
