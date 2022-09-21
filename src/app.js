@@ -6,7 +6,7 @@ import configureStore from './store/configureStore';
 import { addExpense } from './actions/expenses';
 import selectExpenses from './selectors/expenses';
 
-import moment from 'moment'
+
 
 import 'normalize.css/normalize.css';
 import './styles/styles.scss';
