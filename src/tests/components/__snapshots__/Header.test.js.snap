@@ -5,6 +5,7 @@ exports[`should render Header correctly 1`] = `
   <h1>
     Expensify Header
   </h1>
+  <Connect(ExpenseSummary) />
   <div
     className="menu"
   >

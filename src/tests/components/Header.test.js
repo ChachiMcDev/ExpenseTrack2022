@@ -1,8 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-//import toJSON from 'enzyme-to-json';
 import Header from '../../components/Header';
-
+import expenses from '../fixtures/expenses'
 
 
 test('should render Header correctly', () => {
@@ -12,3 +11,4 @@ test('should render Header correctly', () => {
     // renderer.render(<Header />);
     // expect(renderer.getRenderOutput()).toMatchSnapshot();
 })
+
