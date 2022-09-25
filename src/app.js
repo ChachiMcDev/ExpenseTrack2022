@@ -3,8 +3,8 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux'
 import AppRouter from './routers/AppRouter';
 import configureStore from './store/configureStore';
-
-
+import './firebase/firebase';
+import './playground/promises';
 
 
 import 'normalize.css/normalize.css';
@@ -13,10 +13,6 @@ import 'react-dates/lib/css/_datepicker.css'
 
 const store = configureStore();
 
-store.subscribe(() => {
-    console.log('current state/ subscribed', store.getState())
-})
-console.log('heh heh heh')
 const jsx = (
     <Provider store={store}>
         <AppRouter />
