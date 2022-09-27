@@ -14,3 +14,8 @@ git push -u origin main
 #npm commands
 npm install --production -- only installs dependencies
 npm install -- installs dev and prod dependencies
+
+
+#heroku commands
+heroku config:set KEY=value
+heroku config:unset KEY

@@ -23,16 +23,16 @@
 // })
 
 import * as firebase from 'firebase';
-import expenses from '../tests/fixtures/expenses';
+
 
 const config = {
-    apiKey: "AIzaSyCxdvudCUiVRH_9RNR9NI0Qt-mBN-YvtUI",
-    authDomain: "expense-app-2022.firebaseapp.com",
-    projectId: "expense-app-2022",
-    databaseURL: "https://expense-app-2022-default-rtdb.firebaseio.com",
-    storageBucket: "expense-app-2022.appspot.com",
-    messagingSenderId: "1004795030833",
-    appId: "1:1004795030833:web:581b855f4ff7bbe3a6d410"
+    apiKey: process.env.FIREBASE_API_KEY,
+    authDomain: process.env.FIREBASE_AUTH_DOMAIN,
+    projectId: process.env.FIREBASE_PROJECT_ID,
+    databaseURL: process.env.FIREBASE_DATABASE_URL,
+    storageBucket: process.env.FIREBASE_STORAGE_BUCKET,
+    messagingSenderId: process.env.FIREBASE_MESSAGING_SENDER_ID,
+    appId: process.env.FIREBASE_APP_ID
 };
 
 
