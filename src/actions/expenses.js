@@ -50,10 +50,8 @@ const removeExpense = ({ id } = {}) => ({
 export const startRemoveExpense = ({ id }) => {
     return (dispatch) => {
         const { } = { id }
-        return database.ref(`expenses/${id}`).get().then((snapshot) => {
-            snapshot.val().remove()
-            dispatch(removeExpense({ id: snapshot.val().key }))
-        })
+        database.ref(`expenses/${id}`).remove()
+        dispatch(removeExpense({ id }))
     }
 }
 
@@ -66,11 +64,12 @@ const editExpense = (id, updates) => ({
     updates
 })
 
+
 export const startEditExpense = (id, updates) => {
 
     return (dispatch) => {
-        database.ref('expenses').filter((ex) => {
-            return ref.key !== ref.key
+        database.ref(`expenses/${id}`).update(updates).then(() => {
+            dispatch(editExpense(id, updates))
         })
     }
 }

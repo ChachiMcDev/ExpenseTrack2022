@@ -123,8 +123,6 @@ test('should setup set expense action object with data', () => {
 test('should fetch expenses from firebase', (done) => {
 
     const store = mockStore({})
-
-
     store.dispatch(startSetExpenses()).then(() => {
         const actions = store.getActions()
         expect(actions[0]).toEqual({
