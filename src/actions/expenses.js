@@ -13,7 +13,7 @@ import database from '../firebase/firebase';
 //function runs (has the ability to dispatch other actions and do whatever it wants)
 
 // ADD_EXPENSE
-const addExpense = (expense) => ({
+export const addExpense = (expense) => ({
     type: 'ADD_EXPENSE',
     expense
 })
@@ -41,7 +41,7 @@ export const startAddExpense = (expenseData = {}) => {
 };
 
 // REMOVE_EXPENSE
-const removeExpense = ({ id } = {}) => ({
+export const removeExpense = ({ id } = {}) => ({
     type: 'REMOVE_EXPENSE',
     id
 })
@@ -49,16 +49,17 @@ const removeExpense = ({ id } = {}) => ({
 
 export const startRemoveExpense = ({ id }) => {
     return (dispatch) => {
-        const { } = { id }
-        database.ref(`expenses/${id}`).remove()
-        dispatch(removeExpense({ id }))
+        return database.ref(`expenses/${id}`).remove().then(() => {
+            dispatch(removeExpense({ id }))
+        })
+
     }
 }
 
 
 
 // EDIT_EXPENSE
-const editExpense = (id, updates) => ({
+export const editExpense = (id, updates) => ({
     type: 'EDIT_EXPENSE',
     id,
     updates
@@ -68,7 +69,7 @@ const editExpense = (id, updates) => ({
 export const startEditExpense = (id, updates) => {
 
     return (dispatch) => {
-        database.ref(`expenses/${id}`).update(updates).then(() => {
+        return database.ref(`expenses/${id}`).update(updates).then(() => {
             dispatch(editExpense(id, updates))
         })
     }
@@ -100,4 +101,3 @@ export const startSetExpenses = () => {
 }
 
 
-export { addExpense, removeExpense, editExpense }

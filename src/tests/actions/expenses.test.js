@@ -1,13 +1,17 @@
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk'
-import { startAddExpense, addExpense, removeExpense, editExpense, setExpenses, startSetExpenses } from '../../actions/expenses'
+import { startAddExpense, addExpense, removeExpense, startRemoveExpense, editExpense, setExpenses, startSetExpenses, startEditExpense } from '../../actions/expenses'
 import expenses from '../fixtures/expenses';
 import database from '../../firebase/firebase';
 
 
+
 const mockStore = configureMockStore([thunk])
 
+
+
 beforeEach((done) => {
+
     const expensesData = {};
     expenses.forEach(({ id, description, note, amount, createdAt }) => {
         expensesData[id] = { description, note, amount, createdAt };
@@ -133,20 +137,42 @@ test('should fetch expenses from firebase', (done) => {
     })
 })
 
-// test('to setup add expense action object with default values', () => {
-//     const defaultData = {
-//         description: '',
-//         note: '',
-//         amount: 0,
-//         createdAt: 0
-//     }
-//     const action = addExpense();
 
-//     expect(action).toEqual({
-//
-//         expense: {
-//             id: expect.any(String),
-//             ...defaultData
-//         }
-//     });
-// });
+
+test('should remove expense from database and store', (done) => {
+    const store = mockStore({})
+    console.log(jasmine.DEFAULT_TIMEOUT_INTERVAL)
+    store.dispatch(startRemoveExpense({ id: expenses[1].id })).then(() => {
+        const actions = store.getActions()
+        expect(actions[0]).toEqual({
+            type: 'REMOVE_EXPENSE',
+            id
+        })
+        return database.ref(`expenses/${id}`).once('value')
+    }).then((snapshot) => {
+        expect(snapshot.val()).toBeFalsy()
+
+    })
+    done()
+});
+
+
+test('should edit expense in database and store', () => {
+    const store = mockStore(expenses)
+    const updates = {
+        description: "used to be blah, now just ahh yeah",
+        note: "new note",
+        amount: 50000
+    }
+
+    store.dispatch(startEditExpense(expenses[5].id, updates)).then(() => {
+        const actions = store.getActions()
+
+        expect(actions[0]).toEqual({
+            type: 'EDIT_EXPENSE',
+            id,
+            updates
+        })
+    })
+})
+
