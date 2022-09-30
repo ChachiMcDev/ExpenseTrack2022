@@ -158,7 +158,7 @@ test('should remove expense from database and store', (done) => {
 
 
 test('should edit expense in database and store', () => {
-    const store = mockStore(expenses)
+    const store = mockStore({})
     const updates = {
         description: "used to be blah, now just ahh yeah",
         note: "new note",

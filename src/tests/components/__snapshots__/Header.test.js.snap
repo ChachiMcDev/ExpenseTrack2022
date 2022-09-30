@@ -5,7 +5,6 @@ exports[`should render Header correctly 1`] = `
   <h1>
     Expensify Header
   </h1>
-  <Connect(ExpenseSummary) />
   <div
     className="menu"
   >
@@ -16,7 +15,7 @@ exports[`should render Header correctly 1`] = `
       activeClassName="is-active"
       ariaCurrent="true"
       exact={true}
-      to="/"
+      to="/dashboard"
     >
       Dash
     </NavLink>
@@ -26,6 +25,15 @@ exports[`should render Header correctly 1`] = `
       to="/create"
     >
       Create
+    </NavLink>
+    <NavLink
+      activeClassName="is-active"
+      ariaCurrent="true"
+      id="logout"
+      onClick={[Function]}
+      to="/"
+    >
+      LogOut
     </NavLink>
   </div>
 </header>

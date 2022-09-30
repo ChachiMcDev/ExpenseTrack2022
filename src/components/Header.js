@@ -1,24 +1,31 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
-import ExpenseSummary from './ExpenseSummary';
+import { connect } from 'react-redux';
+import MenuLinks from './MenuLinks'
 
 
 
-export default () => (
+export const Header = ({ isAuthenticated }) => (
     <header>
         <h1>Expensify Header</h1>
 
-        <ExpenseSummary />
-        <div className="menu">Menu on the right</div>
-        <div>
-            <NavLink to="/" activeClassName='is-active' exact={true}>Dash</NavLink>
-            <NavLink to="/create" activeClassName='is-active'>Create</NavLink>
 
-        </div>
+        <div className="menu">Menu on the right</div>
+
+
+
+
+        {isAuthenticated ? <MenuLinks /> : ""}
+
 
     </header>
 )
 
+const mapStateToProps = (state) => ({
+    isAuthenticated: state.auth.uid
+})
+
+
+export default connect(mapStateToProps)(Header)
 
 
 
